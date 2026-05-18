@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Money Insider — Weekly Tips to Cut Bills & Grow Wealth</title>
+  <meta name="description" content="Join 40,000+ Americans getting weekly tips to slash their bills, grow savings, and find smart ways to earn more money.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #1a6b3c;
+      --green-light: #2d8a52;
+      --gold: #c9a84c;
+      --cream: #faf8f3;
+      --dark: #1a1a1a;
+      --gray: #666;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      background: var(--green);
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: white;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, var(--green) 0%, #0f4a28 100%);
+      padding: 80px 24px 100px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,168,76,0.2);
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 6vw, 58px);
+      font-weight: 900;
+      color: white;
+      line-height: 1.15;
+      max-width: 720px;
+      margin: 0 auto 20px;
+    }
+
+    .hero h1 em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    /* FORM CARD */
+    .form-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      max-width: 480px;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+      text-align: center;
+    }
+
+    .form-card p {
+      font-size: 13px;
+      color: var(--gray);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e8e8e8;
+      border-radius: 10px;
+      font-size: 15px;
+      font-family: 'Inter', sans-serif;
+      color: var(--dark);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    input:focus { border-color: var(--green); }
+    input::placeholder { color: #aaa; }
+
+    .email-input { margin-bottom: 16px; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--green);
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .submit-btn:hover { background: var(--green-light); transform: translateY(-1px); }
+    .submit-btn:active { transform: translateY(0); }
+    .submit-btn:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+
+    .privacy {
+      font-size: 11px;
+      color: #aaa;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .success-msg .checkmark {
+      width: 56px;
+      height: 56px;
+      background: #e8f5ee;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 24px;
+    }
+
+    .success-msg h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      color: var(--green);
+      margin-bottom: 8px;
+    }
+
+    .success-msg p {
+      color: var(--gray);
+      font-size: 14px;
+    }
+
+    /* SOCIAL PROOF */
+    .social-proof {
+      background: white;
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .subscribers {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .avatars {
+      display: flex;
+    }
+
+    .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 2px solid white;
+      margin-left: -8px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: white;
+    }
+
+    .avatar:first-child { margin-left: 0; }
+
+    .sub-text { font-size: 14px; color: var(--gray); }
+    .sub-text strong { color: var(--dark); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 600px;
+      margin: 0 auto 48px;
+    }
+
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--green);
+    }
+
+    .stat-label { font-size: 13px; color: var(--gray); margin-top: 4px; }
+
+    /* WHAT YOU GET */
+    .benefits {
+      background: var(--cream);
+      padding: 60px 24px;
+    }
+
+    .benefits h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      background: white;
+      border-radius: 16px;
+      padding: 28px;
+      border: 1px solid #eee;
+    }
+
+    .benefit-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      background: white;
+      padding: 60px 24px;
+    }
+
+    .testimonials h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .testimonial {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 24px;
+    }
+
+    .stars { color: var(--gold); margin-bottom: 12px; font-size: 16px; }
+
+    .testimonial p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--dark);
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .reviewer { font-size: 13px; font-weight: 600; color: var(--gray); }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, var(--green) 0%, #0f4a28 100%);
+      padding: 80px 24px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 16px;
+    }
+
+    .cta p { color: rgba(255,255,255,0.8); margin-bottom: 32px; font-size: 16px; }
+
+    .cta-form {
+      display: flex;
+      gap: 12px;
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .cta-form input {
+      flex: 1;
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .cta-form input::placeholder { color: rgba(255,255,255,0.5); }
+    .cta-form input:focus { border-color: var(--gold); }
+
+    .cta-btn {
+      padding: 14px 24px;
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      border-radius: 10px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      font-family: 'Inter', sans-serif;
+      transition: opacity 0.2s;
+    }
+
+    .cta-btn:hover { opacity: 0.9; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark);
+      padding: 32px 24px;
+      text-align: center;
+    }
+
+    footer p { color: #666; font-size: 13px; line-height: 1.8; }
+    footer a { color: #888; text-decoration: none; }
+    footer a:hover { color: white; }
+
+    @media (max-width: 480px) {
+      .form-row { grid-template-columns: 1fr; }
+      .stats { grid-template-columns: repeat(3, 1fr); gap: 12px; }
+      .stat-num { font-size: 28px; }
+      .cta-form { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Smart<span>Money</span>Insider</div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-badge">📬 Free Weekly Newsletter</div>
+    <h1>Cut Your Bills. <em>Grow Your Wealth.</em> Every Week.</h1>
+    <p>Join 40,000+ Americans getting actionable tips to slash expenses, boost savings, and discover smart ways to earn more — delivered every Monday morning.</p>
+
+    <div class="form-card">
+      <div id="form-content">
+        <h3>Get Your Free Weekly Wealth Tips</h3>
+        <p>No spam. Unsubscribe anytime. 100% free.</p>
+        <div class="form-row">
+          <input type="text" id="firstName" placeholder="First name">
+          <input type="text" id="lastName" placeholder="Last name">
+        </div>
+        <input type="email" id="email" class="email-input" placeholder="Your best email address">
+        <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Send Me Weekly Tips →</button>
+        <p class="privacy">🔒 Your info is safe. We never sell or share your data.</p>
+      </div>
+      <div class="success-msg" id="success-msg">
+        <div class="checkmark">✅</div>
+        <h3>You're In!</h3>
+        <p>Check your inbox — your first issue arrives Monday morning.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-proof">
+    <div class="subscribers">
+      <div class="avatars">
+        <div class="avatar" style="background:#2d8a52;">JM</div>
+        <div class="avatar" style="background:#c9a84c;">SR</div>
+        <div class="avatar" style="background:#1a6b3c;">KL</div>
+        <div class="avatar" style="background:#e07b39;">TP</div>
+        <div class="avatar" style="background:#6b4fbb;">AB</div>
+      </div>
+      <span class="sub-text">Joined by <strong>40,000+ Americans</strong> this year</span>
+    </div>
+
+    <div class="stats">
+      <div>
+        <div class="stat-num">$312</div>
+        <div class="stat-label">Avg monthly savings reported by readers</div>
+      </div>
+      <div>
+        <div class="stat-num">40K+</div>
+        <div class="stat-label">Active subscribers nationwide</div>
+      </div>
+      <div>
+        <div class="stat-num">4.8★</div>
+        <div class="stat-label">Average reader rating</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="benefits">
+    <h2>What You Get Every Monday</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Bill-Cutting Strategies</h3>
+        <p>Real, tested ways to reduce your electricity, insurance, grocery, and subscription bills this month.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💰</div>
+        <h3>Side Income Ideas</h3>
+        <p>Vetted opportunities Americans are using to earn an extra $500-$2,000/month on the side.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📈</div>
+        <h3>Wealth Building Tips</h3>
+        <p>Simple, no-jargon strategies to grow your savings and build long-term financial security.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>What Our Readers Say</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"Followed one tip from last month's issue and cut my electricity bill by $94. This newsletter pays for itself — and it's free!"</p>
+        <div class="reviewer">— Michael T., Phoenix AZ</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"I've tried dozens of money newsletters. This is the only one I actually read every single week. Practical, no fluff."</p>
+        <div class="reviewer">— Sandra R., Dallas TX</div>
+      </div>
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <p>"Started a side hustle from an idea in issue #12. Made $1,800 last month. Best free subscription I've ever signed up for."</p>
+        <div class="reviewer">— James K., Atlanta GA</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Start Saving Money This Week</h2>
+    <p>Your first issue lands Monday morning. Free forever.</p>
+    <div class="cta-form">
+      <input type="email" id="cta-email" placeholder="Enter your email">
+      <button class="cta-btn" onclick="handleCtaSubmit()">Join Free →</button>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      © 2026 SmartMoneyInsider.com · All rights reserved<br>
+      <a href="/privacy">Privacy Policy</a> · <a href="/unsubscribe">Unsubscribe</a><br>
+      You are receiving this because you subscribed at SmartMoneyInsider.com
+    </p>
+  </footer>
+
+  <script>
+    const API = 'https://mail.theaipathshala.com/api/subscribe'
+
+    async function handleSubmit() {
+      const email = document.getElementById('email').value.trim()
+      const firstName = document.getElementById('firstName').value.trim()
+      const lastName = document.getElementById('lastName').value.trim()
+      const btn = document.getElementById('submitBtn')
+
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.')
+        return
+      }
+
+      btn.disabled = true
+      btn.textContent = 'Subscribing...'
+
+      try {
+        const res = await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, firstName, lastName, source: 'smartmoneyinsider' })
+        })
+
+        if (res.ok) {
+          document.getElementById('form-content').style.display = 'none'
+          document.getElementById('success-msg').style.display = 'block'
+        } else {
+          throw new Error('Failed')
+        }
+      } catch {
+        btn.disabled = false
+        btn.textContent = 'Send Me Weekly Tips →'
+        alert('Something went wrong. Please try again.')
+      }
+    }
+
+    async function handleCtaSubmit() {
+      const email = document.getElementById('cta-email').value.trim()
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email address.')
+        return
+      }
+
+      try {
+        await fetch(API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, source: 'smartmoneyinsider-cta' })
+        })
+        document.getElementById('cta-email').value = ''
+        alert('You\'re in! Check your inbox Monday morning.')
+      } catch {
+        alert('Something went wrong. Please try again.')
+      }
+    }
+  </script>
+
+</body>
+</html>
